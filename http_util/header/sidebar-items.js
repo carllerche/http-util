@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["HdrVal","A slice of a `HeaderValue`."]],"trait":[["Encoded","An encoded header value."]]});

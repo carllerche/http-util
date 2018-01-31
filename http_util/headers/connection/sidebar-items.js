@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Connection","`Connection` header, defined in RFC7230"],["Error",""]]});

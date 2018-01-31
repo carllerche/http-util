@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["connection",""],["content_length",""],["expect",""],["transfer_encoding",""]],"struct":[["Encoding","A value to represent an encoding used in `Transfer-Encoding` or `Accept-Encoding` header."]]});
