@@ -1,0 +1,8 @@
+[package]
+name = "http-util"
+version = "0.1.0" # remember to update html_root_url
+authors = ["Carl Lerche <me@carllerche.com>"]
+readme = "README.md"
+
+[dependencies]
+http = "0.1"
