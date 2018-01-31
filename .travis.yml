@@ -1,0 +1,21 @@
+---
+language: rust
+sudo: false
+
+matrix:
+  include:
+    # Oldest supported Rust
+    - rust: 1.21.0
+    - rust: stable
+    # WebAssembly support.
+    - rust: beta
+      script:
+        - rustup target add wasm32-unknown-unknown
+        - cargo build --target=wasm32-unknown-unknown
+
+script:
+  - cargo test
+
+notifications:
+  email:
+    on_success: never
