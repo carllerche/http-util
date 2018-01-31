@@ -1,12 +1,14 @@
 ---
 language: rust
 sudo: false
+cache: cargo
 
 matrix:
   include:
     # Oldest supported Rust
     - rust: 1.23.0
     - rust: stable
+      before_deploy: cargo doc --no-deps
     # WebAssembly support.
     - rust: beta
       script:
@@ -15,6 +17,21 @@ matrix:
 
 script:
   - cargo test
+
+deploy:
+  provider:  pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  target_branch: gh-pages
+  local_dir: target/doc
+  on:
+    branch: master
+    repo: carllerche/http-util
+    rust: stable
+
+env:
+  global:
+    secure: SDFRm4Mm8w1T7ZnrplLtjUH6Vq6C7viA2uS1gvlahJopge7CJXPfzG9GJTHLpUgs8dz6q5GXIYlS+e0YNzQ5T4nyHvK/qeMlNBI+xLpIOCPGhghQ1ypdHZMeG0t/L4lOXifTRsN9AVXDI/h2iy/GyVergxYernZe9VbkAuD1CeqzLsfGFUXawKZDKniVHsdY3C0GautW02EqcBwNbHcsxGL38ZktOZ9D38eTTDO11It+FHZ9sKQ12nM2nVAQpypcOrSDb+Epdn7/s4ifxNU+HPekdnMVLj+cXPzIOR9XdaXZouXmG/XcmGZCG2I/U4nZsWXPLy4cuO+zZtgyk3ZRCA2mhuFk9/4ZX61Lgn4Z3BvCxVQC1qxoFEfnrFSma0ta0JMD8pcQ69Q6MBCpL7hwSvtBpIzJridOwhxkB7Ej46hC3tR4R6rkiwUYjsE0AfURm5c2sd+d9E021YSR4LP3L6yQ/POIetGxarV2U7VJHMLa2zR8D+p6HQyuof3FZ2WCMeWxc0n/S9iARLlejqrkBYJBxsCnnfSdQyDCoGzRgmXwKtm2xEHvPuLN6XBFMbLMr995L3Juy+1IqmzG7ItKBba7yT0yOiI9VyybLFZ+6Tj1Hhy/362IlwupJplXIeBwjP30V7EuzuNNgwoqgGLBbKweNSYCXuL6yETMb7AKHXw=
 
 notifications:
   email:
