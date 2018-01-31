@@ -5,7 +5,7 @@ sudo: false
 matrix:
   include:
     # Oldest supported Rust
-    - rust: 1.21.0
+    - rust: 1.23.0
     - rust: stable
     # WebAssembly support.
     - rust: beta
